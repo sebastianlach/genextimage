@@ -6,7 +6,7 @@ truncate -s $SIZE $FILENAME
 mkfs.ext4 $FILENAME
 sudo mkdir -p /mnt/image
 sudo mount -o loop $FILENAME /mnt/image
-sudo tar -xvf $INPUT -C /mnt/image
+sudo tar -xf $INPUT -C /mnt/image
 sudo sync
 sudo umount /mnt/image
 sudo rmdir /mnt/image
