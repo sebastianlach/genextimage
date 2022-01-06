@@ -1,0 +1,28 @@
+version: 2.1
+
+jobs:
+
+  build:
+    resource_class: small
+    docker:
+      - image: docker:20.10.11-git
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.11
+      - run:
+          name: "Build docker image"
+          command: >
+            docker build
+            --tag slach/tar2ext4:$CIRCLE_SHA1
+            .
+      - run:
+          name: "Push docker image"
+          command: |
+            docker login -u slach -p $DOCKERHUB_PASSWORD
+            docker push slach/tar2ext4:$CIRCLE_SHA1
+
+workflows:
+  build-and-push:
+    jobs:
+      - build
