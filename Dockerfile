@@ -4,7 +4,7 @@ MAINTAINER root@slach.eu
 USER root
 WORKDIR /data
 
-COPY genextimage /usr/local/bin/genextimage
-RUN chmod +x /usr/local/bin/genextimage
+COPY tar2ext4 /usr/local/bin/tar2ext4
+RUN chmod +x /usr/local/bin/tar2ext4
 
-ENTRYPOINT ["genextimage"]
+ENTRYPOINT ["tar2ext4"]
