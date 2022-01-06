@@ -21,6 +21,8 @@ jobs:
           command: |
             docker login -u slach -p $DOCKERHUB_PASSWORD
             docker push slach/tar2ext4:$CIRCLE_SHA1
+            docker tag slach/tar2ext4:$CIRCLE_SHA1 slach/tar2ext4:stable
+            docker push slach/tar2ext4:stable
 
 workflows:
   build-and-push:
