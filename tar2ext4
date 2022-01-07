@@ -6,4 +6,4 @@ CONTENT=/mnt/content
 mkdir -p $CONTENT
 truncate -s $SIZE $FILENAME
 tar -xf $INPUT -C $CONTENT
-mkfs.ext4 $FILENAME -d $CONTENT
+mkfs.ext4 -d $CONTENT $FILENAME
