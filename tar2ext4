@@ -2,11 +2,8 @@
 INPUT=$1
 FILENAME=$2
 SIZE=$3
+CONTENT=/mnt/content
+mkdir -p $CONTENT
 truncate -s $SIZE $FILENAME
-mkfs.ext4 $FILENAME
-sudo mkdir -p /mnt/image
-sudo mount -o loop $FILENAME /mnt/image
-sudo tar -xf $INPUT -C /mnt/image
-sudo sync
-sudo umount /mnt/image
-sudo rmdir /mnt/image
+tar -xf $INPUT -C $CONTENT
+mkfs.ext4 $FILENAME -d $CONTENT
